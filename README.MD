@@ -28,26 +28,29 @@ A machine learning-based system for predicting and optimizing energy consumption
   - Displays energy consumption trends, temperature vs. energy plots, and weekday vs. weekend comparisons.
 
 ---
-
 ## Project Structure
-energy-consumption-prediction/
-├── templates/ # HTML templates for the Flask app
-│ ├── index.html # Home page
-│ ├── predict_form.html # Form for energy prediction
-│ ├── prediction.html # Prediction results page
-│ └── visualize.html # Visualization page
-├── static/ # Static files (images, CSS, etc.)
-│ ├── energy_consumption.png # Energy consumption visualization
-│ ├── temp_vs_energy.png # Temperature vs. energy plot
-│ └── weekday_weekend.png # Weekday vs. weekend comparison
-├── datasetCreation.py # Script to generate sample datasets
-├── model.py # Script to train the ML model
-├── suggestion_generation.py # Script to generate energy-saving suggestions
-├── web_app.py # Flask web application
-├── README.md # Project documentation
-├── requirements.txt # Python dependencies
-└── energy_model.pkl # Trained ML model
 
+```
+energy-consumption-prediction/
+├── templates/                          # HTML templates for the Flask app
+│   ├── index.html                      # Home page
+│   ├── predict_form.html               # Form for energy prediction
+│   ├── prediction.html                 # Prediction results page
+│   └── visualize.html                  # Visualization page
+│
+├── static/                             # Static files (images, CSS, etc.)
+│   ├── energy_consumption.png          # Energy consumption visualization
+│   ├── temp_vs_energy.png              # Temperature vs. energy plot
+│   └── weekday_weekend.png             # Weekday vs. weekend comparison
+│
+├── datasetCreation.py                  # Script to generate sample datasets
+├── model.py                            # Script to train the ML model
+├── suggestion_generation.py            # Script to generate energy-saving suggestions
+├── web_app.py                          # Flask web application
+├── README.md                           # Project documentation
+├── requirements.txt                    # Python dependencies
+└── energy_model.pkl                    # Trained ML model
+```
 
 
 ---
