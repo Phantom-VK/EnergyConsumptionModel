@@ -1,0 +1,45 @@
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Prediction Results</title>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+            <style>
+                body { padding-top: 50px; }
+                .result-template { padding: 40px 15px; }
+                .suggestion { border-left: 4px solid #28a745; padding-left: 15px; margin-bottom: 10px; }
+                .high-priority { border-left-color: #dc3545; }
+                .medium-priority { border-left-color: #ffc107; }
+            </style>
+        </head>
+        <body>
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+                <a class="navbar-brand" href="/">Energy Predictor</a>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="/predict">Predict</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/visualize">Visualize</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main role="main" class="container">
+                <div class="result-template">
+                    <h1>Prediction Results</h1>
+                    <p class="lead">Energy consumption prediction for Building {{ building_id }}</p>
+
+                    <div class="card mb-4">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="card-title mb-0">Predicted Energy Consumption</h5>
+                        </div>
+                        <div class="card-body">
+                            <h2 class="display-4 text-center">{{ prediction }} kWh</h2>
+                            <p class="text-center text-muted">Predicted daily energy consumption</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card mb-4">
+                                <div class="card-header bg-info text-white">

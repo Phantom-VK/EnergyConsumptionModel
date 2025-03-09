@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Consumption Visualizations</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 50px;
+        }
+        .visualization-container {
+            margin-bottom: 30px;
+        }
+        .visualization-container img {
+            width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 5px;
+        }
+        .visualization-container h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="/">Energy Predictor</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/predict">Predict</a></li>
+                <li class="nav-item active"><a class="nav-link" href="/visualize">Visualize</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main role="main" class="container">
+        <div class="starter-template">
+            <h1>Energy Consumption Visualizations</h1>
+            <p class="lead">Explore energy consumption patterns and insights.</p>
+
+            <!-- Energy Consumption by Building -->
+            <div class="visualization-container">
+                <h3>Energy Consumption by Building</h3>
+                <img src="{{ url_for('static', filename='energy_consumption.png') }}" alt="Energy Consumption by Building">
+                <p>This chart shows the daily energy consumption for each building over time.</p>
+            </div>
+
+            <!-- Temperature vs. Energy Consumption -->
+            <div class="visualization-container">
+                <h3>Temperature vs. Energy Consumption</h3>
+                <img src="{{ url_for('static', filename='temp_vs_energy.png') }}" alt="Temperature vs. Energy Consumption">
+                <p>This scatter plot shows the relationship between temperature and energy consumption.</p>
+            </div>
+
+            <!-- Weekday vs. Weekend Energy Consumption -->
+            <div class="visualization-container">
+                <h3>Weekday vs. Weekend Energy Consumption</h3>
+                <img src="{{ url_for('static', filename='weekday_weekend.png') }}" alt="Weekday vs. Weekend Energy Consumption">
+                <p>This bar chart compares average energy consumption on weekdays and weekends.</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
