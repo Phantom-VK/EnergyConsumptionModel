@@ -8,6 +8,7 @@ import matplotlib
 matplotlib.use('Agg')  # For running without a display
 import matplotlib.pyplot as plt
 from datetime import datetime, timedelta
+from suggestion_generation import generate_suggestions  # Import the function
 
 app = Flask(__name__)
 
@@ -35,6 +36,28 @@ def load_data():
 @app.route('/')
 def home():
     return render_template('index.html')
+
+
+# Suggestion Generation Page
+@app.route('/suggestions', methods=['GET', 'POST'])
+def suggestions():
+    if request.method == 'POST':
+        # Get the building ID from the form
+        building_id = int(request.form['building_id'])
+
+        # Load datasets
+        devices_df, energy_df, timetable_df, event_df, _ = load_data()
+
+        # Generate suggestions
+        if devices_df is not None and energy_df is not None:
+            generated_suggestions = generate_suggestions(building_id, devices_df, energy_df)
+            return render_template('suggestions.html', suggestions=generated_suggestions, building_id=building_id)
+        else:
+            return "Data files not found. Please run the data generation script first."
+
+    # Render the form for GET requests
+    return render_template('suggestions_form.html')
+
 
 
 # Prediction page
@@ -80,15 +103,15 @@ def predict():
             if suggestions_df is not None:
                 building_suggestions = suggestions_df[suggestions_df['Building_ID'] == building_id]
                 top_suggestions = building_suggestions.sort_values('Potential_Savings_kWh', ascending=False).head(3)
-                suggestions = top_suggestions.to_dict('records')
+                top_suggestions = top_suggestions.to_dict('records')
             else:
-                suggestions = []
+                top_suggestions = []
 
             return render_template('prediction.html',
                                    building_id=building_id,
                                    prediction=round(prediction, 2),
                                    forecasts=forecasts,
-                                   suggestions=suggestions)
+                                   suggestions=top_suggestions)
 
     return render_template('predict_form.html')
 
@@ -148,4 +171,4 @@ def visualize():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)

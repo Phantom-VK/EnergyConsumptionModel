@@ -1,4 +1,5 @@
 from sklearn.cluster import KMeans
+import pandas as pd
 
 def generate_suggestions(building_id, devices_df, energy_df):
     """
@@ -87,3 +88,8 @@ def generate_suggestions(building_id, devices_df, energy_df):
     })
 
     return suggestions
+
+if __name__ == "__main__":
+    energydf = pd.read_csv("energy_consumption.csv")
+    devicesdf = pd.read_csv("devices.csv")
+    print(generate_suggestions(1, devicesdf,energydf))

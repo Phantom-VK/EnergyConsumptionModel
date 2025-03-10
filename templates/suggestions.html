@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy-Saving Suggestions</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 50px;
+        }
+        .suggestion {
+            border-left: 4px solid #28a745;
+            padding-left: 15px;
+            margin-bottom: 10px;
+        }
+        .high-priority {
+            border-left-color: #dc3545;
+        }
+        .medium-priority {
+            border-left-color: #ffc107;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="/">Energy Predictor</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/predict">Predict</a></li>
+                <li class="nav-item"><a class="nav-link" href="/visualize">Visualize</a></li>
+                <li class="nav-item active"><a class="nav-link" href="/suggestions">Suggestions</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main role="main" class="container">
+        <div class="starter-template">
+            <h1>Energy-Saving Suggestions for Building {{ building_id }}</h1>
+            <p class="lead">Here are the suggestions to minimize energy consumption:</p>
+
+            <div class="card">
+                <div class="card-body">
+                    {% for suggestion in suggestions %}
+                        <div class="suggestion {% if suggestion['Priority'] == 'High' %}high-priority{% elif suggestion['Priority'] == 'Medium' %}medium-priority{% endif %}">
+                            <h5>{{ suggestion['Suggestion'] }}</h5>
+                            <p><strong>Potential Savings:</strong> {{ suggestion['Potential_Savings_kWh'] }} kWh</p>
+                            <p><strong>Priority:</strong> {{ suggestion['Priority'] }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
